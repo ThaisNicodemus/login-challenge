@@ -31,6 +31,9 @@ module.exports = {
     },
     extend: {
       fontFamily: 'MarkPro, sans-serif',
+      boxShadow: {
+        'shadow': 'inset 5px 5px 15px rgba(0, 0, 0, 0.15)',
+      },
     },
   },
   plugins: [],

@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import clsx from "clsx";
+import {clsx} from "clsx";
 
 export interface TextProps {
-    size?: "xs" | "sm" | '2sm' | "md" | '2md' | "lg" | '2lg' | "3lg" | "xl" | "2xl" | "3xl";
+    size?: "xs" | "sm" | '2sm' | "md" | '2md' | "lg" | '2lg' | "3lg";
     children: ReactNode;
     asChild?: boolean;
 }
@@ -13,7 +13,7 @@ export function Text({ size = "md", children, asChild }: TextProps) {
 
     return ( <TextComp 
         className={clsx(
-            "text-white",
+            "text-white  font-MarkPro",
             {
                 'text-xs': size === "xs",
                 'text-sm': size === "sm",
@@ -23,9 +23,6 @@ export function Text({ size = "md", children, asChild }: TextProps) {
                 'text-lg': size === "lg",
                 'text-2lg': size === "2lg",
                 'text-3lg': size === "3lg",
-                'text-xl': size === "xl",
-                'text-2xl': size === "2xl",
-                'text-3xl': size === "3xl",
             }
         )}
         >

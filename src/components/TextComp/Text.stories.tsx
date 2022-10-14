@@ -11,7 +11,7 @@ export default {
     },
     argTypes: {
         size: {
-            options: ["xs", "sm", '2sm', "md", '2md', "lg", '2lg', "3lg", "xl", "2xl", "3xl"],
+            options: ["md", '2md'],
             control: {
                 type: 'inline-radio'
             }
@@ -24,18 +24,28 @@ export const Default: StoryObj<TextProps>  = {}
 export const small: StoryObj<TextProps>  = {
     args: {
         size: 'sm',
+    },
+    argTypes: {
+        size: {
+            options: ["sm", '2sm'] ,
+            control: {
+                type: 'inline-radio'
+            }
+        }
     }
 }
 
 export const large: StoryObj<TextProps>  = {
     args: {
         size: 'lg',
-    }
-}
-
-export const xLarge: StoryObj<TextProps>  = {
-    args: {
-        size: 'xl',
+    },
+    argTypes: {
+        size: {
+            options: ["lg", '2lg', "3lg"],
+            control: {
+                type: 'inline-radio'
+            }
+        }
     }
 }
 
@@ -50,6 +60,12 @@ export const CustomText: StoryObj<TextProps>  = {
         children: {
             table: {
                 disable: true,
+            }
+        },
+        size: {
+            options: ["xs", "sm", '2sm', "md", '2md', "lg", '2lg', "3lg"],
+            control: {
+                type: 'inline-radio'
             }
         }
     }
