@@ -3,11 +3,6 @@
 @tailwind components;
 
 @font-face {
-    font-family: 'MarkPro';
-    src: local('MarkPro'), url(./font/MarkPro.ttf) format('truetype');
-  }
-
-  .h1{
-    font-family: MarkPro, Helvet;
-    color: #red;
+  font-family: 'MarkPro';
+  src: local('MarkPro'), url(./font/MarkPro.ttf) format('truetype');
 }

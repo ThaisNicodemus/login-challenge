@@ -7,14 +7,15 @@ export interface TextProps {
     color?: 'text-black' | 'text-white' | 'text-secondary-white' | 'text-primary-yellow' | 'text-gray-200' | 'text-gray-100' | 'text-red-300' | 'text-red-200' | 'text-red-100';
     children: ReactNode;
     asChild?: boolean;
+    className?: string;
 }
 
-export function Text({ size = "md", color, children, asChild }: TextProps) {
+export function Text({ size = "md", color, children, asChild, className }: TextProps) {
     const TextComp = asChild ? Slot : 'span';
 
     return ( <TextComp 
         className={clsx(
-            "text-white font-MarkPro",
+            "font-MarkPro",
             {
                 'text-xs': size === "xs",
                 'text-sm': size === "sm",
@@ -36,7 +37,8 @@ export function Text({ size = "md", color, children, asChild }: TextProps) {
                 'text-red-200': color === 'text-red-200',
                 'text-red-100': color === 'text-red-100',
                 current: 'currentColor'
-            }
+            },
+            className
         )}
         >
             {children}

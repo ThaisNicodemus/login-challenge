@@ -7,14 +7,15 @@ export interface HeadingProps {
     color?: 'text-black' | 'text-white' | 'text-secondary-white' | 'text-primary-yellow' | 'text-gray-200' | 'text-gray-100' | 'text-red-300' | 'text-red-200' | 'text-red-100';
     children: ReactNode;
     asChild?: boolean;
+    className?: string;
 }
 
-export function Heading({ size = "xl", color, children, asChild }: HeadingProps) {
+export function Heading({ size = "xl", color, children, asChild,  className  }: HeadingProps) {
     const HeadingComp = asChild ? Slot : 'h2';
 
     return ( <HeadingComp 
         className={clsx(
-            "text-red-300 font-MarkPro",
+            "font-MarkPro",
             {
                 'text-xl': size === "xl",
                 'text-2xl': size === "2xl",
@@ -31,8 +32,8 @@ export function Heading({ size = "xl", color, children, asChild }: HeadingProps)
                 'text-red-200': color === 'text-red-200',
                 'text-red-100': color === 'text-red-100',
                 current: 'currentColor'
-            }
-
+            },
+            className
         )}
         >
             {children}

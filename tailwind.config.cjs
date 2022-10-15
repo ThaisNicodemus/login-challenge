@@ -23,6 +23,7 @@ module.exports = {
       'secondary-white': '#E0E0E0',
       'primary-yellow': '#E9B425',
       gray: {
+        300: '#000000',
         200:'#33383D',
         100: '#1C1D20'
       },
