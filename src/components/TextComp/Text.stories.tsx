@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { Children } from 'react'
 import { Text, TextProps } from './Text'
 
 export default {
@@ -15,7 +14,18 @@ export default {
             control: {
                 type: 'inline-radio'
             }
-        }
+        },
+        asChild: {
+            table: {
+              disable: true,
+            },
+          },
+        color: {
+            options: ['black', 'white', 'secondary-white', 'gray-100', 'gray-200', 'red-300', 'red-200', 'red-100', 'primary-yellow' ],
+            control: {
+                type: 'color'
+            },
+        },
     }
 } as Meta<TextProps>
 

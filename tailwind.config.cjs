@@ -20,20 +20,26 @@ module.exports = {
     colors: {
       'black': '#222222',
       'white': '#FFFFFF',
-      'gray-200':'#33383D',
-      'gray-100': '#1C1D20',
       'secondary-white': '#E0E0E0',
-      'red-300': '#FF2D04',
-      'red-200': '#C13216',
-      'red-100': '#C12D18',
-      'primary-yellow': '#E9B425'
-
+      'primary-yellow': '#E9B425',
+      gray: {
+        200:'#33383D',
+        100: '#1C1D20'
+      },
+      red: {
+        300: '#FF2D04',
+        200: '#C13216',
+        100: '#C12D18'
+      }
     },
     extend: {
       fontFamily: 'MarkPro, sans-serif',
       boxShadow: {
         'shadow': 'inset 5px 5px 15px rgba(0, 0, 0, 0.15)',
       },
+      height: {
+        '60': '3.75rem',
+      }
     },
   },
   plugins: [],

@@ -4,16 +4,17 @@ import {clsx} from "clsx";
 
 export interface TextProps {
     size?: "xs" | "sm" | '2sm' | "md" | '2md' | "lg" | '2lg' | "3lg";
+    color?: 'text-black' | 'text-white' | 'text-secondary-white' | 'text-primary-yellow' | 'text-gray-200' | 'text-gray-100' | 'text-red-300' | 'text-red-200' | 'text-red-100';
     children: ReactNode;
     asChild?: boolean;
 }
 
-export function Text({ size = "md", children, asChild }: TextProps) {
+export function Text({ size = "md", color, children, asChild }: TextProps) {
     const TextComp = asChild ? Slot : 'span';
 
     return ( <TextComp 
         className={clsx(
-            "text-white  font-MarkPro",
+            "text-white font-MarkPro",
             {
                 'text-xs': size === "xs",
                 'text-sm': size === "sm",
@@ -23,6 +24,18 @@ export function Text({ size = "md", children, asChild }: TextProps) {
                 'text-lg': size === "lg",
                 'text-2lg': size === "2lg",
                 'text-3lg': size === "3lg",
+            },
+            {
+                'text-black': color ===  'text-black',
+                'text-white': color === 'text-white',
+                'text-secondary-white': color === 'text-secondary-white',
+                'text-primary-yellow': color === 'text-primary-yellow',
+                'text-gray-200': color === 'text-gray-200',
+                'text-gray-100': color === 'text-gray-100',
+                'text-red-300': color === 'text-red-300',
+                'text-red-200': color === 'text-red-200',
+                'text-red-100': color === 'text-red-100',
+                current: 'currentColor'
             }
         )}
         >
