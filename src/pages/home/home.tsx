@@ -1,4 +1,4 @@
-import { Lock, User } from 'phosphor-react'
+import { CloudSun } from 'phosphor-react'
 import { Heading } from '../../components/Heading/Heading'
 import { Text } from '../../components/TextComp/Text'
 import { Button } from '../../components/Button/Button'
@@ -6,13 +6,62 @@ import {
 	InputTextComp,
 	RootInputTextProps,
 } from '../../components/TextInput/InputText'
-
-
+import logoBlack from '../../assets/img/Logo-Compass-black.svg'
+import BallImg from '../../assets/img/ball-Logo-Compass.svg'
 
 export function HomePage() {
 	return (
-		<div className="w-screen h-screen grid grid-cols-2 bg-gradient-to-r from-black to-gray-300">
-			
+		<div className="w-screen h-screen bg-white">
+			<header className="w-screen grid grid-cols-3">
+				<div className="flex justify-start items-start pt-7 pl-10">
+					<img src={logoBlack} alt="compass-logo-white" className="w-40 " />
+				</div>
+
+				<div className="flex flex-col justify-center items-center">
+					<Text size="3lg" color="text-black" className="font-bold ">
+						11:26
+					</Text>
+					<Text size="sm" color="text-black" className="font-normal">
+						terça-feira, 17 de março de 2020
+					</Text>
+				</div>
+
+				<div className="flex flex-col justify-start items-end pt-6 pr-10">
+					<Text size="sm" color="text-black" className="font-normal">
+						Passo Fundo - RS
+					</Text>
+					<div className="flex justify-center items-center">
+						<CloudSun size={32} weight="thin" />
+						<Text size="3lg" color="text-black" className="font-normal">
+							22º
+						</Text>
+					</div>
+				</div>
+			</header>
+
+			<main className="w-screen h-fit grid grid-cols-2 bg-white">
+				<div className="flex justify-start items-start">
+					<img src={BallImg} alt="compass-logo-ball" className="w-[31.563rem] bottom-0" />
+				</div>
+
+				<div className="flex flex-col justify-center items-end pr-10">
+					<Text size='2lg' color='text-red-200' className='font-bold'>Our mission is</Text>
+					<Text size='2md' color='text-black'>Nossa missão é</Text>
+					<Text size='3lg' color='text-red-200' className='font-bold'>to transform the world</Text>
+					<Text size='2md' color='text-black'>transformar o mundo</Text>
+					<Text size='3lg' color='text-red-200' className='font-bold'>building digital experiences</Text>
+					<Text size='2md' color='text-black'>construindo experiências digitais</Text>
+					<Text size='3lg' color='text-red-200' className='font-bold'>that enable our client’s growth</Text>
+					<Text size='2md' color='text-black'>que permitam o crescimento dos nossos clientes</Text>
+
+				</div>
+			</main>
+
+			<footer className="w-screen h-24 grid grid-cols-3 absolute">
+				<div className="bg-gray-200"></div>
+				<div className="bg-primary-yellow"></div>
+				<div className="bg-gray-200"></div>
+			</footer>
 		</div>
 	)
 }
