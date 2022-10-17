@@ -3,6 +3,19 @@
 @tailwind components;
 
 @font-face {
-  font-family: 'MarkPro';
-  src: local('MarkPro'), url(./font/MarkPro.ttf) format('truetype');
+	font-family: 'MarkPro';
+	src: local('MarkPro'), url(./font/MarkPro.ttf) format('truetype');
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+@media (max-width: 800px) {
+	* {
+		overflow-y: hidden;
+		overflow-x: hidden;
+	}
 }

@@ -1,11 +1,7 @@
 import { CloudSun } from 'phosphor-react'
-import { Heading } from '../../components/Heading/Heading'
 import { Text } from '../../components/TextComp/Text'
-import { Button } from '../../components/Button/Button'
-import {
-	InputTextComp,
-	RootInputTextProps,
-} from '../../components/TextInput/InputText'
+import { RootWeather } from '../../components/Weather/Weather'
+import './styles.css'
 import logoBlack from '../../assets/img/Logo-Compass-black.svg'
 import BallImg from '../../assets/img/ball-Logo-Compass.svg'
 
@@ -39,13 +35,13 @@ export function HomePage() {
 				</div>
 			</header>
 
-			<main className="w-screen h-fit grid grid-cols-2 bg-white">
-				<div className="flex justify-start items-start">
-					<img
+			<main className="w-screen h-screen grid grid-cols-2 bg-white">
+				<div className="Img__Wrapper flex justify-start items-end">
+					<img 
 						src={BallImg}
 						alt="compass-logo-ball"
 						className="w-[31.563rem] bottom-0"
-					/>
+					/> 
 				</div>
 
 				<div className="flex flex-col justify-center items-end pr-10">
@@ -78,25 +74,31 @@ export function HomePage() {
 
 			<footer className="w-screen grid grid-cols-3 absolute justify-center items-center bg-black">
 				<div className="flex">
-					<Text size="xs" color='text-secondary-white'>
+					<Text size="xs" color="text-secondary-white">
 						Essa janela do navegador é usada para manter sua sessão de autenticação
 						ativa. Deixe-a aberta em segundo plano e abra uma nova janela para
 						continuar a navegar.
 					</Text>
 				</div>
 				<div className="flex justify-center items-center">
-					<Text size="xs" color='text-secondary-white'>Application refresh in</Text>
+					<Text size="xs" color="text-secondary-white">
+						Application refresh in
+					</Text>
 					<div className="flex flex-col justify-center items-center">
-						<Text size="3lg"color='text-secondary-white'>600</Text>
-						<Text size="sm" color='text-secondary-white'>seconds</Text>
+						<Text size="3lg" color="text-secondary-white">
+							600
+						</Text>
+						<Text size="sm" color="text-secondary-white">
+							seconds
+						</Text>
 					</div>
 				</div>
 				<div className="flex justify-center items-center">
-					<div className='bg-white'>
-						<a className='text-red-100'>Continuar Navegando</a>
-					</div>	
+					<div className="bg-white">
+						<a className="text-red-100">Continuar Navegando</a>
+					</div>
 					<div className="flex flex-col justify-center items-center">
-						<a className='text-secondary-white'>Logout</a>
+						<a className="text-secondary-white">Logout</a>
 					</div>
 				</div>
 			</footer>
