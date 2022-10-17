@@ -1,6 +1,6 @@
 import { CloudSun } from 'phosphor-react'
 import { Text } from '../../components/TextComp/Text'
-import { RootWeather } from '../../components/Weather/Weather'
+// import { Weather } from '../../components/Weather/Weather'
 import './styles.css'
 import logoBlack from '../../assets/img/Logo-Compass-black.svg'
 import BallImg from '../../assets/img/ball-Logo-Compass.svg'
@@ -8,7 +8,7 @@ import BallImg from '../../assets/img/ball-Logo-Compass.svg'
 export function HomePage() {
 	return (
 		<div className="w-screen h-screen bg-white">
-			<header className="w-screen grid grid-cols-3">
+			<header className="w-screen  grid grid-cols-3">
 				<div className="flex justify-start items-start pt-7 pl-10">
 					<img src={logoBlack} alt="compass-logo-white" className="w-40 " />
 				</div>
@@ -35,13 +35,13 @@ export function HomePage() {
 				</div>
 			</header>
 
-			<main className="w-screen h-screen grid grid-cols-2 bg-white">
-				<div className="Img__Wrapper flex justify-start items-end">
-					<img 
+			<main className="w-screen h-80 h-screen grid grid-cols-2 bg-white">
+				<div className="flex justify-start items-end">
+					<img
 						src={BallImg}
 						alt="compass-logo-ball"
-						className="w-[31.563rem] bottom-0"
-					/> 
+						className="w-[31.563rem] bottom-0 fixed"
+					/>
 				</div>
 
 				<div className="flex flex-col justify-center items-end pr-10">

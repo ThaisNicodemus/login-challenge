@@ -1,58 +1,65 @@
-import React, { useEffect, useState, ReactNode } from 'react'
-import { CloudSun } from 'phosphor-react'
-import getWeatherByPosition from '../../contexts/weather'
+import React, { useEffect, useState } from 'react'
+import { 
+    WeatherContainer, 
+    Paragraph, 
+    Temperature, 
+    ImgWeather, 
+    ContentTemperature,
+    ContentCity 
+} from './styles'
+import getWeatherByPosition from '../../contexts/weatherServices'
 
-import { Text } from '../TextComp/Text';
-import { CityLocation, TemperatureBox, Temperature } from './styles';
+const Weather = () => {
+    const [latitude, setLatitude] = useState(0)
+    const [longitude, setLongitude] = useState(0)
+    const [cityName, setCityName] = useState('')
+    const [temperature, setTemperature] = useState('')
+    const [forecast, setForecast] = useState('')
+    const [icon, setIcon] = useState('')
+   
 
-// export interface RootWeatherProps {
-// 	className?: string
-// }
+    useEffect(() => {
+        getWheater()
+    })
 
-export function RootWeather() {
-	const Weather = () => {
-		const [latitude, setLatitude] = useState(0)
-		const [longitude, setLongitude] = useState(0)
-		const [cityName, setCityName] = useState(null)
-		const [temperature, setTemperature] = useState(null)
-		const [forecast, setForecast] = useState(null)
-		const [icon, setIcon] = useState(null)
+    const getWheater = async () => {
 
-		useEffect(() => {
-			getWheater()
-		})
+        navigator.geolocation.getCurrentPosition(pos => {
+            const { latitude, longitude } = pos.coords
+            setLatitude(latitude)
+            setLongitude(longitude)
+        })
 
-		const getWheater = async () => {
-			navigator.geolocation.getCurrentPosition((pos) => {
-				const { latitude, longitude } = pos.coords
-				setLatitude(latitude)
-				setLongitude(longitude)
-			})
+        if(latitude && longitude === 0) return
 
-			if (latitude && longitude === 0) return
+        const response = await getWeatherByPosition(latitude, longitude)
+        const { data } = response
+        const { name, main } = data
+        const { temp } = main
+        const temperature = Math.round(temp),
+        setCityName(name),
+        setTemperature(temperature),
+        setForecast(data.weather[0].main),
+        setIcon(data.weather[0].icon)
+    }
+    
+    // console.log('render cicle', { latitude, longitude, cityName, forecast, temperature })
 
-			const response = await getWeatherByPosition({ latitude, longitude })
-			const { data } = response
-			const { name, main } = data
-			const { temp } = main
-			const temperature = Math.round(temp)
-			setCityName(name)
-			// setTemperature(temperature)
-			setForecast(data.weather[0].main)
-			setIcon(data.weather[0].icon)
-		}
-		return (
-			<div className="flex flex-col justify-start items-end pt-6 pr-10">
-				<CityLocation className="font-normal text-black text-sm">
-					{cityName}
-				</CityLocation>
-				<TemperatureBox className="flex justify-center items-center">
-					<CloudSun size={32} weight="thin" />
-					<Temperature className="font-normal text-black text-3lg">
-						{`${temperature}°`}
-					</Temperature>
-				</TemperatureBox>
-			</div>
-		)
-	}
+    const iconurl = "https://www.weatherapi.com/docs/conditions.json" + icon + ".png";
+
+    return (
+        <WeatherContainer>
+            <div>
+                <ContentCity>
+                    <Paragraph>{cityName}</Paragraph>
+                </ContentCity>
+                <ContentTemperature>                    
+                    <ImgWeather id="wicon" src={iconurl} alt="Weather icon"/>                 
+                    <Temperature>{`${temperature}°`}</Temperature>
+                </ContentTemperature>
+            </div>
+        </WeatherContainer>
+    )
 }
+
+export default Weather;

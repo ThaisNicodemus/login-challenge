@@ -1,38 +1,48 @@
-import React, { useState, createContext } from 'react';
+import { getField } from '@storybook/store'
+import React, {
+	useState,
+	createContext,
+	ReactNode,
+	useEffect,
+	Children,
+} from 'react'
+import { useNavigate } from 'react-router-dom'
 import { NavigateProvider } from 'react-use-navigate'
 
-// export const AuthContext = createContext();
+export const AuthContext = createContext({})
 
-// export const AuthProvider = ({ children }) => {
-//     const navigate = NavigateProvider();
+export interface AuthProviderProps {
+	children: ReactNode
+	asChild?: boolean
+	className?: string
+}
 
-//     const [user, setUser] = useState(null);
+export const login = (user: string, password: string) => {
+	console.log('login auth', { user, password })
 
-//     const login = (email, password) => {
-//         console.log("login auth", { email, password });
+	if (password !== 'admin' || user !== 'admin') {
+		return false
+	}
+	localStorage.setItem('user', JSON.stringify(user))
 
-//         // Senha mocada!
-//         if (password !== "admin") {
-//             return false;
-//         }
-//         setUser({ id: "001", email });
-//         localStorage.setItem('user', JSON.stringify(user));
-        
-//         return true;        
-//     };
+	return true
+}
 
-//     const logout = () => {
-//         console.log("logout");
-//         setUser(null);
-//         localStorage.removeItem('user');
-//         navigate("/login");
-//     };
+export function AuthProvider(Props: AuthProviderProps) {
+	const navigate = useNavigate()
 
-//     return (
-//         <AuthContext.Provider
-//             value={{ authenticated: !!user, user, login, logout }}
-//         >
-//             {children}
-//         </AuthContext.Provider>
-//     );
-// };
+	const [user, setUser] = useState<{ id: any; user: string }>()
+
+	const logout = () => {
+		console.log('logout')
+		setUser(undefined)
+		localStorage.removeItem('user')
+		navigate('/login')
+	}
+
+	return (
+		<AuthContext.Provider value={{ authenticated: !!user, user, login, logout }}>
+			{Props.children}
+		</AuthContext.Provider>
+	)
+}
